@@ -14,6 +14,7 @@ DATA = [
     "Tornado",
 ]
 
+# IMPORTANT: when using str.format(), any literal { or } in CSS must be doubled: {{ and }}
 HTML = """
 <!doctype html>
 <html>
@@ -21,11 +22,11 @@ HTML = """
     <meta charset="utf-8" />
     <title>Search</title>
     <style>
-      body { font-family: system-ui, sans-serif; margin: 2rem; }
-      input { padding: .5rem; width: min(520px, 95%); }
-      .hint { color: #666; margin-top: .5rem; }
-      ul { padding-left: 1.25rem; }
-      code { background: #f5f5f5; padding: .1rem .25rem; border-radius: .25rem; }
+      body {{ font-family: system-ui, sans-serif; margin: 2rem; }}
+      input {{ padding: .5rem; width: min(520px, 95%); }}
+      .hint {{ color: #666; margin-top: .5rem; }}
+      ul {{ padding-left: 1.25rem; }}
+      code {{ background: #f5f5f5; padding: .1rem .25rem; border-radius: .25rem; }}
     </style>
   </head>
   <body>
@@ -84,6 +85,5 @@ def api_search():
 
 if __name__ == "__main__":
     # Codespaces: bind to 0.0.0.0 so the port can be forwarded
-    # Prefer Codespaces/hosting-provided PORT if available.
     port = int(os.environ.get("PORT", "5000"))
     app.run(host="0.0.0.0", port=port, debug=True)
