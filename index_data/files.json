@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "files": {
+    "ca9920a809248565": {
+      "file_id": "ca9920a809248565",
+      "dataroom": "default",
+      "relpath": "ASM-2025.docx",
+      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/ASM-2025.docx",
+      "tags": [
+        "fundraising / LP",
+        "buyout manager",
+        "venture capital",
+        "fees / economics"
+      ],
+      "tags_str": "fundraising / LP, buyout manager, venture capital, fees / economics",
+      "chunks": 65,
+      "csv_name": "ca9920a809248565.csv",
+      "added_at": 1769096401
+    },
+    "2e822781cb2ce151": {
+      "file_id": "2e822781cb2ce151",
+      "dataroom": "default",
+      "relpath": "Barclays-Althoff.docx",
+      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/Barclays-Althoff.docx",
+      "tags": [
+        "venture capital",
+        "real assets",
+        "hedge fund",
+        "risk"
+      ],
+      "tags_str": "venture capital, real assets, hedge fund, risk",
+      "chunks": 29,
+      "csv_name": "2e822781cb2ce151.csv",
+      "added_at": 1769096416
+    }
+  }
+}
