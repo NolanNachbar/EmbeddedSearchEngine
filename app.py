@@ -104,8 +104,6 @@ def reset_collection():
     _collection = None
     return get_collection()
 
-
-
 # -------------------- Embeddings --------------------
 _local_model = None
 
@@ -192,20 +190,16 @@ def docx_to_paragraphs(path: str) -> List[str]:
 
 
 def pdf_to_paragraphs(path: str) -> List[str]:
-    from pypdf import PdfReader
-
-    reader = PdfReader(path)
-    chunks = []
-    for page in reader.pages:
-        chunks.append(page.extract_text() or "")
-    full_text = "\n".join(chunks)
-
-    # Convert single newlines to spaces, keep blank lines as paragraph separators
+    import pdfplumber
+    texts = []
+    with pdfplumber.open(path) as pdf:
+        for page in pdf.pages:
+            t = page.extract_text(x_tolerance=2, y_tolerance=2) or ""
+            texts.append(t)
+    full_text = "\n".join(texts)
     full_text = re.sub(r"(?<!\n)\n(?!\n)", " ", full_text)
-
     raw_paras = re.split(r"\n\s*\n+", full_text)
     return _clean_paragraphs(raw_paras)
-
 
 def extract_paragraphs(file_path: str) -> List[str]:
     ext = os.path.splitext(file_path)[1].lower()
@@ -626,12 +620,10 @@ def escape_html(s: str) -> str:
 
 def highlight_escaped(escaped_text: str, query: str) -> str:
     toks = sorted(set(_WORD_RE.findall((query or "").lower())), key=len, reverse=True)
-    out = escaped_text
-    for t in toks:
-        if not t:
-            continue
-        out = re.sub(rf"(?i)\b({re.escape(t)})\b", r"<mark>\1</mark>", out)
-    return out
+    if not toks:
+        return escaped_text
+    pat = re.compile(r"(?i)\b(" + "|".join(map(re.escape, toks)) + r")\b")
+    return pat.sub(r"<mark>\1</mark>", escaped_text)
 
 
 def vector_search(query: str, k: int, dataroom: str = "", tag: str = "") -> List[Dict]:
@@ -778,6 +770,11 @@ def _openai_generate(question: str, evidence_blocks: List[Tuple[str, str]]) -> s
                 texts.append(c["text"])
     return "\n".join(texts).strip()
 
+def preview(text: str, max_chars: int = 900) -> str:
+    t = (text or "").strip()
+    if len(t) <= max_chars:
+        return t
+    return t[:max_chars].rsplit(" ", 1)[0] + "…"
 
 def _extractive_consensus(question: str, evidence_blocks: List[Tuple[str, str]]) -> str:
     """
@@ -1122,7 +1119,7 @@ def render_search_results(q: str, results: List[Dict]) -> str:
 
     lis = []
     for r in results:
-        esc_text = escape_html(r["text"])
+        esc_text = escape_html(preview(r["text"]))
         shown = highlight_escaped(esc_text, q)
         score = f"{r['score']:.4f}"
         lis.append(
@@ -1147,7 +1144,7 @@ def render_ask_block(q: str, rag: Dict) -> str:
 
     ev_lis = []
     for i, r in enumerate(evidence[:24], start=1):
-        esc_text = escape_html(r["text"])
+        esc_text = escape_html(preview(r["text"]))
         shown = highlight_escaped(esc_text, q)
         score = f"{r['score']:.4f}"
         ev_lis.append(

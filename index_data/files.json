@@ -1,37 +1,37 @@
 {
   "version": 1,
   "files": {
-    "ca9920a809248565": {
-      "file_id": "ca9920a809248565",
+    "61c5b1314c17a89d": {
+      "file_id": "61c5b1314c17a89d",
       "dataroom": "default",
-      "relpath": "ASM-2025.docx",
-      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/ASM-2025.docx",
+      "relpath": "Rook_-_Executive_Summary.pdf",
+      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/Rook_-_Executive_Summary.pdf",
       "tags": [
-        "fundraising / LP",
+        "venture capital",
         "buyout manager",
-        "venture capital",
-        "fees / economics"
+        "fees / economics",
+        "fundraising / LP"
       ],
-      "tags_str": "fundraising / LP, buyout manager, venture capital, fees / economics",
-      "chunks": 65,
-      "csv_name": "ca9920a809248565.csv",
-      "added_at": 1769096401
+      "tags_str": "venture capital, buyout manager, fees / economics, fundraising / LP",
+      "chunks": 1,
+      "csv_name": "61c5b1314c17a89d.csv",
+      "added_at": 1769103491
     },
-    "2e822781cb2ce151": {
-      "file_id": "2e822781cb2ce151",
+    "5e9f40450d446d22": {
+      "file_id": "5e9f40450d446d22",
       "dataroom": "default",
-      "relpath": "Barclays-Althoff.docx",
-      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/Barclays-Althoff.docx",
+      "relpath": "Rook_-_Investor_Letter.pdf",
+      "abs_path": "/workspaces/EmbeddedSearchEngine/uploads/default/Rook_-_Investor_Letter.pdf",
       "tags": [
         "venture capital",
+        "buyout manager",
         "real assets",
-        "hedge fund",
-        "risk"
+        "fundraising / LP"
       ],
-      "tags_str": "venture capital, real assets, hedge fund, risk",
-      "chunks": 29,
-      "csv_name": "2e822781cb2ce151.csv",
-      "added_at": 1769096416
+      "tags_str": "venture capital, buyout manager, real assets, fundraising / LP",
+      "chunks": 1,
+      "csv_name": "5e9f40450d446d22.csv",
+      "added_at": 1769103493
     }
   }
 }
